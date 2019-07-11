@@ -1,0 +1,82 @@
+Use the command
+sudo yum remove <package_name>
+to remove each of these package names in this order
+(if one or more of these packages is not found on this server, it is ok to go on)
+teradata_arc
+fastld
+fastexp
+tptstream1510
+tptbase1510
+mload
+tpump
+bteq
+tdwallet1510
+piom
+tdodbc
+cliv2
+tdicu
+TeraGSS_linux_x64
+ 
+cd /tmp
+For each of these package_name, in order
+teragss1600
+tdicu1600
+cliv21600
+tdodbc1600
+piom1600
+tdwallet1600
+bteq1600
+(note that teradata_arc is not needed on an Informatica server and so will not be installed here)
+execute these steps to unpack and install the package.
+ 
+# Unpack the package
+gunzip -c package_name.tar.gz | tar xof -
+# Go to the unpacked directory
+cd package_name
+# Install the package
+sudo rpm -i package_name.rpm
+ 
+The package TeraJDBC requires special handling.
+unzip TeraJDBC*
+sudo sh
+cd /opt/teradata
+mkdir tdjars
+chown root:root tdjars
+chmod 755 tdjars
+Copy the *jar files from your /tmp location into /opt/teradata/tdjars
+Make each jar file in /opt/teradata/tdjars
+-rw-r--r--
+and owner
+teradata:teradata
+ 
+exit root, returning to teradata user
+ 
+Next test the tdodbc software you just installed.
+ 
+Make a copy of a model odbc.ini file:
+cp /opt/teradata/client/ODBC_64/odbc.ini /tmp
+ 
+Edit the /tmp/odbc.ini file and put in the information needed to create a DSN for TDDEV. Entries you'll need to add:
+ 
+[ODBC Data Sources]
+testdsn=tdata.so
+# Define our first NBCU target database
+tddev=tdata.so
+ 
+[tddev]
+Driver=/opt/teradata/client/ODBC_64/lib/tdata.so
+Description=TDDEV
+DBCName=tddev.stg-tfayd.com
+LastUser=
+Username=
+Password=
+Database=
+DefaultDatabase=
+ 
+Save your changes to /tmp/odbc.ini.
+ 
+Set up your execution environment for this test:
+export ODBCINI=/tmp/odbc.ini
+ 
+Execute the Teradata ODBC test program:
+/opt/teradata/client/16.00/odbc_64/samples/C/adhoc
