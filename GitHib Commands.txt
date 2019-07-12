@@ -47,3 +47,18 @@ STAGING TYPES:
 git add -A : Stages ALL
 git add .  : Stages new & modified, without deleted files
 git add -u : Stages modified & deleted files, without new
+
+=====================================================================================================================
+
+CLONE a repository from GIT onto your local machine.
+
+a) create a new folder on your local pc
+ex: TheAlgorithm \ Python
+b) got to rep on githib, click clone and copy the https command for that rep
+ex: https://github.com/TheAlgorithms/Python.git
+c) go to the new folder on your machine where you want to clone, right clik on it and open git bash and run following command
+ gi clone https://github.com/TheAlgorithms/Python.git
+
+=====================================================================================================================
+
+https://github.com/TheAlgorithms/Python.git
