@@ -25,4 +25,5 @@ git push -u origin master
 git pull -u origin master
 git log
 
-
+#Check changes made to staging area:
+git diff --staged "GitHib Commands.txt"
