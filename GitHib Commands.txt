@@ -1,0 +1,26 @@
+Setting up github & generating tokens:
+1) go to github.com, profile setting => SSH & GPG Key
+2) If key exist - delete it. If key doesnt exist then follow these steps:
+	a) Under SSH & GPG Key, click on "generating SSH Keys" link
+	b) on the next page, click on Generating a new SSH key and adding it to the ssh-agent
+	run the following command in your git-bash
+	ssh-keygen -t rsa -b 4096 -C "javed7504@gmail.com"
+	c) Now you need to add SSH key to the ssh-agent
+	run following commands in your git-bash
+	eval $(ssh-agent -s)
+	ssh-add ~/.ssh/id_rsa
+	d) Next step is to add new SSH to your GitHub Account
+	run following command in your git bash, which will copy the key in your clipboard
+ 	clip < ~/.ssh/id_rsa.pub
+	e) Paste the key in github
+
+============
+
+Push files to GitHub:
+
+git status
+git add .
+git commit -m "Changed...."
+git push -u origin master
+
+
