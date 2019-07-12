@@ -14,7 +14,7 @@ Setting up github & generating tokens:
  	clip < ~/.ssh/id_rsa.pub
 	e) Paste the key in github
 
-============
+=====================================================================================================================
 
 Push & pull files to GitHub:
 
@@ -27,3 +27,23 @@ git log
 
 #Check changes made to staging area:
 git diff --staged "GitHib Commands.txt"
+
+=====================================================================================================================
+
+UNDO chnages that made to file in local directory.
+a) make changes to file'
+git status
+git add .
+
+now you want to undo the change:
+git reset "filename"
+git checkout .
+
+Changes are undone..
+
+=====================================================================================================================
+
+STAGING TYPES:
+git add -A : Stages ALL
+git add .  : Stages new & modified, without deleted files
+git add -u : Stages modified & deleted files, without new
