@@ -16,11 +16,13 @@ Setting up github & generating tokens:
 
 ============
 
-Push files to GitHub:
+Push & pull files to GitHub:
 
 git status
 git add .
 git commit -m "Changed...."
 git push -u origin master
+git pull -u origin master
+git log
 
 
